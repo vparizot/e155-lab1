@@ -1,0 +1,61 @@
+m255
+K4
+z2
+!s11f vlog 2021.4 2021.10, Oct 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/lscc/radiant/3.2/modeltech/win32loem
+vlabone_tb
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1725408256
+!i10b 1
+!s100 SDLTA@BAB;[MnHoNNj`bo1
+Ie7:1nHhVcSHEnN>YcoBmJ2
+S1
+Z2 dC:/Users/vparizot/Documents
+w1725408015
+8C:\Users\vparizot\Documents\lab1testbench.sv
+FC:\Users\vparizot\Documents\lab1testbench.sv
+!i122 55
+L0 5 65
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OT;L;2021.4;73
+r1
+!s85 0
+31
+Z5 !s108 1725408256.000000
+!s107 C:\Users\vparizot\Documents\lab1testbench.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:\Users\vparizot\Documents\lab1testbench.sv|
+!s101 -O0
+!i113 1
+Z6 o-work work -sv -O0
+Z7 tCvgOpt 0
+vtop
+R0
+R1
+!i10b 1
+!s100 _z@h]BG7]0Sg^Md8=bHBj1
+I85QmA>AdI@;F@X`<DI]Bh3
+S1
+R2
+w1725401710
+8C:/Users/vparizot/Documents/labonemodelsim.sv
+FC:/Users/vparizot/Documents/labonemodelsim.sv
+!i122 54
+L0 4 65
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/vparizot/Documents/labonemodelsim.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/vparizot/Documents/labonemodelsim.sv|
+!s101 -O0
+!i113 1
+R6
+R7

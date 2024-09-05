@@ -1,0 +1,69 @@
+`timescale 1ns/1ns
+`default_nettype none
+`define N_TV 16
+
+module labone_tb();
+ // Set up test signals
+ logic clk, reset;
+ logic [3:0] s;
+ logic [2:0] led;
+ logic [6:0] seg;
+ logic [2:0] led_expected;
+ logic [6:0] seg_expected;
+ 
+ logic [31:0] vectornum, errors;
+ logic [13:0] testvectors[10000:0]; // Vectors of format s[3:0]_led[2:0]_seg[6:0]
+
+ // Instantiate the device under test
+ top dut(.s(s), .clk(clk), .led(led), .seg(seg));
+
+ // Generate clock signal with a period of 10 timesteps.
+ always
+   begin
+     clk = 1; #5;
+     clk = 0; #5;
+   end
+  
+ // At the start of the simulation:
+ //  - Load the testvectors
+ //  - Pulse the reset line (if applicable)
+ initial
+   begin
+     $readmemb("labone.tv", testvectors, 0, `N_TV - 1);
+     vectornum = 0; errors = 0;
+     reset = 1; #28; reset = 0;
+   end
+  // Apply test vector on the rising edge of clk
+ always @(posedge clk)
+   begin
+       #1; {s, led_expected, seg_expected} = testvectors[vectornum];
+   end
+  initial
+ begin
+   // Create dumpfile for signals
+   $dumpfile("labone_tb.vcd");
+   $dumpvars(0, labone_tb);
+ end
+  // Check results on the falling edge of clk
+ always @(negedge clk)
+   begin
+     if (~reset) // skip during reset
+       begin
+         if (seg != seg_expected || led != led_expected)
+           begin
+             $display("Error: inputs: s", s);
+             $display(" outputs: led, seg=", led, seg, led_expected, seg_expected);
+             errors = errors + 1;
+           end
+
+      
+       vectornum = vectornum + 1;
+      
+       if (testvectors[vectornum] === 11'bx)
+         begin
+           $display("%d tests completed with %d errors.", vectornum, errors);
+           $finish;
+         end
+     end
+   end
+endmodule
